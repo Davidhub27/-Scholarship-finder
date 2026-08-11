@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scholarship Finder</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #155eef;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: linear-gradient(135deg, #123c91, #2875e8);
+            color: white;
+            padding: 90px 8%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ffd43b;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .hero button {
+            margin-top: 30px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #ffd43b;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* SEARCH */
+
+        .search-area {
+            max-width: 1100px;
+            margin: 50px auto 20px;
+            padding: 0 20px;
+        }
+
+        .search-area h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d5dbe7;
+            border-radius: 8px;
+            background: white;
+            font-size: 15px;
+        }
+
+        /* CARDS */
+
+        .scholarships {
+            max-width: 1100px;
+            margin: 30px auto 80px;
+            padding: 0 20px;
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .funded {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #667085;
+            line-height: 1.5;
+            margin: 8px 0;
+        }
+
+        .deadline {
+            color: #dc2626 !important;
+            font-weight: bold;
+        }
+
+        .apply {
+            display: block;
+            text-align: center;
+            background: #155eef;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            margin-top: 18px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .apply:hover {
+            background: #123c91;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .about h2 {
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+            color: #667085;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #101828;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            🎓 Scholarship Finder
+        </div>
+
+        <div>
+            <a href="#home">Home</a>
+            <a href="#scholarships">Scholarships</a>
+            <a href="#about">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <h1>
+            Find Your
+            <span>Scholarship</span>
+        </h1>
+
+        <p>
+            Discover international scholarships,
+            check funding and deadlines,
+            and find the official application website.
+        </p>
+
+        <button onclick="goToScholarships()">
+            Find Scholarships →
+        </button>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-area" id="scholarships">
+
+        <h2>
+            🔎 Find Scholarships
+        </h2>
+
+        <div class="filters">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search scholarship..."
+            >
+
+            <select id="country">
+
+                <option value="all">
+                    All Countries
+                </option>
+
+                <option value="Hungary">
+                    Hungary
+                </option>
+
+                <option value="Japan">
+                    Japan
+                </option>
+
+                <option value="Türkiye">
+                    Türkiye
+                </option>
+
+                <option value="Germany">
+                    Germany
+                </option>
+
+            </select>
+
+
+            <select id="degree">
+
+                <option value="all">
+                    All Degrees
+                </option>
+
+                <option value="Bachelor's">
+                    Bachelor's
+                </option>
+
+                <option value="Master's">
+                    Master's
+                </option>
+
+                <option value="PhD">
+                    PhD
+                </option>
+
+            </select>
+
+
+            <select id="funding">
+
+                <option value="all">
+                    All Funding
+                </option>
+
+                <option value="Fully Funded">
+                    Fully Funded
+                </option>
+
+                <option value="Partial">
+                    Partial
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCHOLARSHIP RESULTS -->
+
+    <section class="scholarships" id="results">
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <h2>
+            About Scholarship Finder
+        </h2>
+
+        <p>
+            Scholarship Finder is a student project designed
+            to help students discover international scholarship
+            opportunities, compare funding and deadlines,
+            and visit official scholarship websites.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Scholarship Finder | Helping students study abroad 🌍
+
+    </footer>
+
+
+<script>
+
+    const scholarships = [
+
+        {
+            name: "Stipendium Hungaricum",
+            country: "Hungary",
+            degree: "Bachelor's",
+            funding: "Fully Funded",
+            opens: "November",
+            deadline: "January",
+            description:
+                "Hungarian government scholarship for international students.",
+            link: "https://stipendiumhungaricum.hu/"
+        },
+
+        {
+            name: "MEXT Undergraduate Scholarship",
+            country: "Japan",
+            degree: "Bachelor's",
+            funding: "Fully Funded",
+            opens: "April",
+            deadline: "Varies",
+            description:
+                "Japanese Government scholarship for international undergraduate students.",
+            link: "https://www.studyinjapan.go.jp/en/"
+        },
+
+        {
+            name: "Türkiye Scholarships",
+            country: "Türkiye",
+            degree: "Bachelor's",
+            funding: "Fully Funded",
+            opens: "January",
+            deadline: "February",
+            description:
+                "Government scholarship programme for international students.",
+            link: "https://www.turkiyeburslari.gov.tr/"
+        },
+
+        {
+            name: "DAAD Scholarships",
+            country: "Germany",
+            degree: "Master's",
+            funding: "Partial",
+            opens: "Varies",
+            deadline: "Varies",
+            description:
+                "Scholarship opportunities for international students in Germany.",
+            link: "https://www.daad.de/en/"
+        }
+
+    ];
+
+
+    const results = document.getElementById("results");
+
+    const search = document.getElementById("search");
+
+    const country = document.getElementById("country");
+
+    const degree = document.getElementById("degree");
+
+    const funding = document.getElementById("funding");
+
+
+    function showScholarships() {
+
+        const searchText =
+            search.value.toLowerCase();
+
+        const selectedCountry =
+            country.value;
+
+        const selectedDegree =
+            degree.value;
+
+        const selectedFunding =
+            funding.value;
+
+
+        const filtered =
+            scholarships.filter(item => {
+
+                const searchMatch =
+                    item.name
+                        .toLowerCase()
+                        .includes(searchText) ||
+
+                    item.country
+                        .toLowerCase()
+                        .includes(searchText);
+
+
+                const countryMatch =
+                    selectedCountry === "all" ||
+                    item.country === selectedCountry;
+
+
+                const degreeMatch =
+                    selectedDegree === "all" ||
+                    item.degree === selectedDegree;
+
+
+                const fundingMatch =
+                    selectedFunding === "all" ||
+                    item.funding === selectedFunding;
+
+
+                return (
+                    searchMatch &&
+                    countryMatch &&
+                    degreeMatch &&
+                    fundingMatch
+                );
+
+            });
+
+
+        results.innerHTML = "";
+
+
+        if (filtered.length === 0) {
+
+            results.innerHTML = `
+                <div class="card">
+                    <h3>No scholarships found.</h3>
+                    <p>
+                        Try changing your search filters.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        filtered.forEach(item => {
+
+            results.innerHTML += `
+
+                <div class="card">
+
+                    <span class="funded">
+                        ${item.funding}
+                    </span>
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <p>
+                        🌎 Country:
+                        <strong>${item.country}</strong>
+                    </p>
+
+                    <p>
+                        🎓 Degree:
+                        <strong>${item.degree}</strong>
+                    </p>
+
+                    <p>
+                        📅 Opens:
+                        <strong>${item.opens}</strong>
+                    </p>
+
+                    <p class="deadline">
+                        ⏰ Deadline:
+                        ${item.deadline}
+                    </p>
+
+                    <p>
+                        ${item.description}
+                    </p>
+
+                    <a
+                        class="apply"
+                        href="${item.link}"
+                        target="_blank"
+                    >
+                        Official Website →
+                    </a>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+
+    function goToScholarships() {
+
+        document
+            .getElementById("scholarships")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    search.addEventListener(
+        "input",
+        showScholarships
+    );
+
+    country.addEventListener(
+        "change",
+        showScholarships
+    );
+
+    degree.addEventListener(
+        "change",
+        showScholarships
+    );
+
+    funding.addEventListener(
+        "change",
+        showScholarships
+    );
+
+
+    showScholarships();
+
+</script>
+
+</body>
+
+</html>
