@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+      content="Scholarship Finder - Find international scholarships for studying abroad">
+
+<title>Scholarship Finder | Study Abroad Scholarships</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #102a72, #2563eb);
+    color: white;
+    padding: 45px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+header p {
+    font-size: 18px;
+    opacity: .95;
+}
+
+/* SEARCH AREA */
+
+.search-box {
+    max-width: 1150px;
+    margin: -25px auto 35px;
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.12);
+    position: relative;
+}
+
+.search-box h2 {
+    margin-bottom: 18px;
+    color: #102a72;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d4d9e2;
+    border-radius: 10px;
+    font-size: 15px;
+    background: white;
+}
+
+button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #174fc4;
+}
+
+/* RESULT INFO */
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 0 20px 50px;
+}
+
+.result-count {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* CARDS */
+
+.scholarship-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(310px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border-radius: 17px;
+    padding: 23px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    transition: .2s;
+    border: 1px solid #e7ebf2;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.12);
+}
+
+.card h2 {
+    font-size: 21px;
+    color: #102a72;
+    margin: 13px 0;
+}
+
+.provider {
+    color: #667085;
+    margin-bottom: 12px;
+}
+
+.badge {
+    display: inline-block;
+    background: #e8f0ff;
+    color: #175cd3;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.full {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.partial {
+    background: #fff7d6;
+    color: #a16207;
+}
+
+.info {
+    margin: 9px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.info strong {
+    color: #344054;
+}
+
+.apply {
+    display: block;
+    text-align: center;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 9px;
+    margin-top: 18px;
+    font-weight: bold;
+}
+
+.apply:hover {
+    background: #174fc4;
+}
+
+/* NO RESULTS */
+
+.no-results {
+    background: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.no-results h2 {
+    color: #b42318;
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #101828;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+footer p {
+    margin: 7px;
+    color: #d0d5dd;
+}
+
+.disclaimer {
+    font-size: 13px;
+    max-width: 850px;
+    margin: 15px auto;
+    line-height: 1.6;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    header p {
+        font-size: 15px;
+    }
+
+    .search-box {
+        margin: -15px 12px 25px;
+    }
+
+    .container {
+        padding: 0 12px 40px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🌍 Scholarship Finder</h1>
+
+    <p>
+        Find scholarships to study abroad
+    </p>
+
+</header>
+
+
+<section class="search-box">
+
+    <h2>🔎 Find Your Scholarship</h2>
+
+    <div class="filters">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search scholarship, country..."
+        >
+
+        <select id="country">
+
+            <option value="all">
+                🌍 All Countries
+            </option>
+
+            <option value="UK">
+                🇬🇧 United Kingdom
+            </option>
+
+            <option value="USA">
+                🇺🇸 USA
+            </option>
+
+            <option value="Germany">
+                🇩🇪 Germany
+            </option>
+
+            <option value="Canada">
+                🇨🇦 Canada
+            </option>
+
+            <option value="Australia">
+                🇦🇺 Australia
+            </option>
+
+            <option value="Japan">
+                🇯🇵 Japan
+            </option>
+
+            <option value="Europe">
+                🇪🇺 Europe
+            </option>
+
+            <option value="France">
+                🇫🇷 France
+            </option>
+
+            <option value="Italy">
+                🇮🇹 Italy
+            </option>
+
+            <option value="Netherlands">
+                🇳🇱 Netherlands
+            </option>
+
+        </select>
+
+
+        <select id="degree">
+
+            <option value="all">
+                🎓 All Degrees
+            </option>
+
+            <option value="Bachelor">
+                Bachelor's
+            </option>
+
+            <option value="Master">
+                Master's
+            </option>
+
+            <option value="PhD">
+                PhD
+            </option>
+
+            <option value="Postdoc">
+                Postdoctoral
+            </option>
+
+        </select>
+
+
+        <select id="funding">
+
+            <option value="all">
+                💰 All Funding
+            </option>
+
+            <option value="Fully Funded">
+                Fully Funded
+            </option>
+
+            <option value="Partial">
+                Partial Funding
+            </option>
+
+        </select>
+
+
+        <select id="field">
+
+            <option value="all">
+                📚 All Fields
+            </option>
+
+            <option value="Engineering">
+                Engineering
+            </option>
+
+            <option value="Computer Science">
+                Computer Science
+            </option>
+
+            <option value="Medicine">
+                Medicine
+            </option>
+
+            <option value="Business">
+                Business
+            </option>
+
+            <option value="Science">
+                Science
+            </option>
+
+            <option value="Arts">
+                Arts & Humanities
+            </option>
+
+            <option value="Any">
+                Any Field
+            </option>
+
+        </select>
+
+
+        <button onclick="filterScholarships()">
+            🔍 Search
+        </button>
+
+    </div>
+
+</section>
+
+
+<main class="container">
+
+    <div class="result-count"
+         id="resultCount">
+    </div>
+
+    <div
+        class="scholarship-grid"
+        id="results">
+    </div>
+
+</main>
+
+
+<footer>
+
+    <h3>🌍 Scholarship Finder</h3>
+
+    <p>
+        Find opportunities to study around the world.
+    </p>
+
+    <p class="disclaimer">
+
+        Scholarship information can change.
+        Always verify eligibility, deadlines,
+        funding and application requirements
+        on the official scholarship website
+        before applying.
+
+    </p>
+
+    <p>
+        © 2026 Scholarship Finder
+    </p>
+
+</footer>
+
+
+<script>
+
+/*
+==================================================
+SCHOLARSHIP DATABASE
+==================================================
+*/
+
+const scholarships = [
+
+    {
+        name: "Chevening Scholarships",
+        provider: "UK Government",
+        country: "UK",
+        degree: ["Master"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Fully funded",
+        deadline: "Check official website",
+        url: "https://www.chevening.org/scholarships/",
+        description:
+        "Fully funded scholarships for eligible international students pursuing one-year master's degrees in the UK."
+    },
+
+
+    {
+        name: "Erasmus Mundus Joint Masters",
+        provider: "European Union",
+        country: "Europe",
+        degree: ["Master"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Scholarship may cover tuition, travel and living support",
+        deadline: "Varies by programme",
+        url:
+        "https://erasmus-plus.ec.europa.eu/",
+        description:
+        "International joint master's programmes delivered by universities in multiple countries."
+    },
+
+
+    {
+        name: "DAAD Scholarships",
+        provider: "DAAD",
+        country: "Germany",
+        degree: ["Master", "PhD", "Postdoc"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Varies by programme",
+        deadline: "Varies by programme",
+        url:
+        "https://www.daad.de/en/study-and-research-in-germany/scholarships/",
+        description:
+        "Scholarship and funding opportunities for international students, graduates and researchers in Germany."
+    },
+
+
+    {
+        name: "Australia Awards Scholarships",
+        provider: "Australian Government",
+        country: "Australia",
+        degree: ["Bachelor", "Master"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount:
+        "Tuition, travel, living support and other benefits subject to programme rules",
+        deadline: "Varies by country",
+        url:
+        "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+        description:
+        "Australian Government scholarships for eligible students from participating developing countries."
+    },
+
+
+    {
+        name: "Fulbright Foreign Student Program",
+        provider: "Fulbright",
+        country: "USA",
+        degree: ["Master", "PhD"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Varies by country and programme",
+        deadline: "Varies by country",
+        url:
+        "https://foreign.fulbrightonline.org/",
+        description:
+        "International graduate-level study and research opportunities in the United States."
+    },
+
+
+    {
+        name: "MEXT Scholarship",
+        provider: "Government of Japan",
+        country: "Japan",
+        degree: ["Bachelor", "Master", "PhD"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Varies by programme",
+        deadline: "Varies by embassy/university route",
+        url:
+        "https://www.studyinjapan.go.jp/en/",
+        description:
+        "Japanese Government scholarship opportunities for international students."
+    },
+
+
+    {
+        name: "Vanier Canada Graduate Scholarships",
+        provider: "Government of Canada",
+        country: "Canada",
+        degree: ["PhD"],
+        funding: "Fully Funded",
+        field: ["Science", "Engineering", "Any"],
+        amount: "Check current programme rules",
+        deadline: "Check official website",
+        url:
+        "https://vanier.gc.ca/",
+        description:
+        "Canadian doctoral scholarship programme for eligible international and Canadian applicants."
+    },
+
+
+    {
+        name: "Gates Cambridge Scholarship",
+        provider: "University of Cambridge",
+        country: "UK",
+        degree: ["Master", "PhD"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Full funding subject to programme rules",
+        deadline: "Varies",
+        url:
+        "https://www.gatescambridge.org/",
+        description:
+        "Fully funded postgraduate scholarships at the University of Cambridge."
+    },
+
+
+    {
+        name: "Clarendon Scholarships",
+        provider: "University of Oxford",
+        country: "UK",
+        degree: ["Master", "PhD"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Tuition and grant support subject to programme rules",
+        deadline: "Varies by course",
+        url:
+        "https://www.ox.ac.uk/clarendon",
+        description:
+        "Graduate scholarship opportunities at the University of Oxford."
+    },
+
+
+    {
+        name: "ETH Zurich Excellence Scholarship",
+        provider: "ETH Zurich",
+        country: "Switzerland",
+        degree: ["Master"],
+        funding: "Fully Funded",
+        field: ["Engineering", "Science", "Computer Science"],
+        amount: "Check current programme rules",
+        deadline: "Usually programme-specific",
+        url:
+        "https://ethz.ch/en/studies/financial/scholarships/excellencescholarship.html",
+        description:
+        "Merit-based scholarship opportunity for eligible master's students at ETH Zurich."
+    },
+
+
+    {
+        name: "Eiffel Excellence Scholarship",
+        provider: "French Government",
+        country: "France",
+        degree: ["Master", "PhD"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Check current programme rules",
+        deadline: "Varies",
+        url:
+        "https://www.campusfrance.org/en/eiffel-scholarship-program-of-excellence",
+        description:
+        "French government scholarship programme for international students."
+    },
+
+
+    {
+        name: "Bocconi International Awards",
+        provider: "Bocconi University",
+        country: "Italy",
+        degree: ["Bachelor", "Master"],
+        funding: "Partial",
+        field: ["Business", "Arts"],
+        amount: "Check current award",
+        deadline: "Varies",
+        url:
+        "https://www.unibocconi.it/en",
+        description:
+        "Merit-based financial aid opportunities at Bocconi University."
+    },
+
+
+    {
+        name: "Lester B. Pearson International Scholarship",
+        provider: "University of Toronto",
+        country: "Canada",
+        degree: ["Bachelor"],
+        funding: "Fully Funded",
+        field: ["Any"],
+        amount: "Check current programme rules",
+        deadline: "Varies",
+        url:
+        "https://future.utoronto.ca/pearson/",
+        description:
+        "Scholarship opportunity for exceptional international undergraduate students."
+    },
+
+
+    {
+        name: "Holland Scholarship",
+        provider: "Dutch Ministry of Education",
+        country: "Netherlands",
+        degree: ["Bachelor", "Master"],
+        funding: "Partial",
+        field: ["Any"],
+        amount: "Check current programme rules",
+        deadline: "Varies",
+        url:
+        "https://www.studyinnl.org/",
+        description:
+        "Scholarship opportunity for eligible international students at participating Dutch institutions."
+    }
+
+];
+
+
+/*
+==================================================
+DISPLAY SCHOLARSHIPS
+==================================================
+*/
+
+function displayScholarships(list) {
+
+    const results =
+        document.getElementById("results");
+
+    const resultCount =
+        document.getElementById("resultCount");
+
+
+    resultCount.innerHTML =
+        `🎓 ${list.length} scholarship(s) found`;
+
+
+    if (list.length === 0) {
+
+        results.innerHTML = `
+
+            <div class="no-results">
+
+                <h2>
+                    No scholarships found
+                </h2>
+
+                <p>
+                    Try changing your filters.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    results.innerHTML =
+        list.map(s => `
+
+        <article class="card">
+
+            <span class="badge">
+                ${s.country}
+            </span>
+
+            <span class="badge ${
+                s.funding === "Fully Funded"
+                ? "full"
+                : "partial"
+            }">
+                ${s.funding}
+            </span>
+
+
+            <h2>
+                ${s.name}
+            </h2>
+
+
+            <div class="provider">
+                🏛️ ${s.provider}
+            </div>
+
+
+            <div class="info">
+                🎓 <strong>Degree:</strong>
+                ${s.degree.join(", ")}
+            </div>
+
+
+            <div class="info">
+                📚 <strong>Field:</strong>
+                ${s.field.join(", ")}
+            </div>
+
+
+            <div class="info">
+                💰 <strong>Funding:</strong>
+                ${s.amount}
+            </div>
+
+
+            <div class="info">
+                📅 <strong>Deadline:</strong>
+                ${s.deadline}
+            </div>
+
+
+            <div class="info">
+                ${s.description}
+            </div>
+
+
+            <a
+                class="apply"
+                href="${s.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🌐 Official Website
+            </a>
+
+        </article>
+
+    `).join("");
+
+}
+
+
+/*
+==================================================
+FILTER
+==================================================
+*/
+
+function filterScholarships() {
+
+    const search =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const country =
+        document
+        .getElementById("country")
+        .value;
+
+
+    const degree =
+        document
+        .getElementById("degree")
+        .value;
+
+
+    const funding =
+        document
+        .getElementById("funding")
+        .value;
+
+
+    const field =
+        document
+        .getElementById("field")
+        .value;
+
+
+    const filtered =
+        scholarships.filter(s => {
+
+
+        const searchMatch =
+
+            search === "" ||
+
+            s.name
+            .toLowerCase()
+            .includes(search) ||
+
+            s.provider
+            .toLowerCase()
+            .includes(search) ||
+
+            s.country
+            .toLowerCase()
+            .includes(search);
+
+
+        const countryMatch =
+
+            country === "all" ||
+
+            s.country === country;
+
+
+        const degreeMatch =
+
+            degree === "all" ||
+
+            s.degree.includes(degree);
+
+
+        const fundingMatch =
+
+            funding === "all" ||
+
+            s.funding === funding;
+
+
+        const fieldMatch =
+
+            field === "all" ||
+
+            s.field.includes(field) ||
+
+            s.field.includes("Any");
+
+
+        return (
+
+            searchMatch &&
+            countryMatch &&
+            degreeMatch &&
+            fundingMatch &&
+            fieldMatch
+
+        );
+
+    });
+
+
+    displayScholarships(filtered);
+
+}
+
+
+/*
+==================================================
+AUTO SEARCH
+==================================================
+*/
+
+document
+.getElementById("search")
+.addEventListener(
+    "input",
+    filterScholarships
+);
+
+
+document
+.getElementById("country")
+.addEventListener(
+    "change",
+    filterScholarships
+);
+
+
+document
+.getElementById("degree")
+.addEventListener(
+    "change",
+    filterScholarships
+);
+
+
+document
+.getElementById("funding")
+.addEventListener(
+    "change",
+    filterScholarships
+);
+
+
+document
+.getElementById("field")
+.addEventListener(
+    "change",
+    filterScholarships
+);
+
+
+/*
+==================================================
+INITIAL DISPLAY
+==================================================
+*/
+
+displayScholarships(scholarships);
+
+</script>
+
+</body>
+</html>
