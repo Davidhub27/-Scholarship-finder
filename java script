@@ -1,0 +1,273 @@
+const scholarships = [
+  // =========================
+  // GOVERNMENT SCHOLARSHIPS
+  // =========================
+
+  {
+    id: "csss",
+    name: "Central Sector Scheme of Scholarship",
+    provider: "Government of India",
+    type: "Government",
+    category: "Merit",
+    education: ["UG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: 800000,
+    minMarks: 80,
+    amount: "Up to ₹20,000/year",
+    deadline: "Check official portal",
+    officialUrl: "https://scholarships.gov.in/",
+    description:
+      "Central government scholarship for meritorious students pursuing higher education."
+  },
+
+  {
+    id: "pm-scholarship",
+    name: "Prime Minister's Scholarship Scheme",
+    provider: "Government of India",
+    type: "Government",
+    category: "Defence",
+    education: ["UG", "PG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: null,
+    minMarks: 60,
+    amount: "As per current scheme",
+    deadline: "Check official portal",
+    officialUrl: "https://scholarships.gov.in/",
+    description:
+      "Scholarship scheme for eligible wards/widows of Armed Forces and other eligible personnel."
+  },
+
+  {
+    id: "inspire-she",
+    name: "INSPIRE Scholarship for Higher Education",
+    provider: "Department of Science & Technology",
+    type: "Government",
+    category: "Science",
+    education: ["UG", "PG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: null,
+    minMarks: null,
+    amount: "As per current scheme",
+    deadline: "Check official portal",
+    officialUrl: "https://online-inspire.gov.in/",
+    description:
+      "Government scholarship supporting students pursuing science-related higher education."
+  },
+
+  {
+    id: "aicte-pragati",
+    name: "AICTE Pragati Scholarship",
+    provider: "AICTE",
+    type: "Government",
+    category: "Girls",
+    education: ["Diploma", "UG"],
+    states: ["All India"],
+    gender: "Female",
+    incomeLimit: null,
+    minMarks: null,
+    amount: "As per current scheme",
+    deadline: "Check official portal",
+    officialUrl: "https://scholarships.gov.in/",
+    description:
+      "Scholarship support for eligible girl students pursuing technical education."
+  },
+
+  {
+    id: "aicte-saksham",
+    name: "AICTE Saksham Scholarship",
+    provider: "AICTE",
+    type: "Government",
+    category: "Disability",
+    education: ["Diploma", "UG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: null,
+    minMarks: null,
+    amount: "As per current scheme",
+    deadline: "Check official portal",
+    officialUrl: "https://scholarships.gov.in/",
+    description:
+      "Scholarship support for eligible students with disabilities pursuing technical education."
+  },
+
+  {
+    id: "ishan-uday",
+    name: "Ishan Uday Special Scholarship Scheme",
+    provider: "Government of India",
+    type: "Government",
+    category: "North East",
+    education: ["UG"],
+    states: [
+      "Assam",
+      "Arunachal Pradesh",
+      "Manipur",
+      "Meghalaya",
+      "Mizoram",
+      "Nagaland",
+      "Tripura",
+      "Sikkim"
+    ],
+    gender: "All",
+    incomeLimit: null,
+    minMarks: null,
+    amount: "As per current scheme",
+    deadline: "Check official portal",
+    officialUrl: "https://scholarships.gov.in/",
+    description:
+      "Scholarship scheme for eligible students from North Eastern states."
+  },
+
+  // =========================
+  // PRIVATE SCHOLARSHIPS
+  // =========================
+
+  {
+    id: "reliance-ug",
+    name: "Reliance Foundation Undergraduate Scholarship",
+    provider: "Reliance Foundation",
+    type: "Private",
+    category: "Merit-cum-Need",
+    education: ["UG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: 1500000,
+    minMarks: null,
+    amount: "Up to ₹2,00,000",
+    deadline: "Check official website",
+    officialUrl:
+      "https://scholarshipportal.reliancefoundation.org/",
+    description:
+      "Scholarship for eligible first-year undergraduate students based on merit and means."
+  },
+
+  {
+    id: "hdfc-ecss",
+    name: "HDFC Bank Parivartan's ECSS Programme",
+    provider: "HDFC Bank",
+    type: "Private",
+    category: "Merit-cum-Need",
+    education: [
+      "Class 1",
+      "Class 2",
+      "Class 3",
+      "Class 4",
+      "Class 5",
+      "Class 6",
+      "Class 7",
+      "Class 8",
+      "Class 9",
+      "Class 10",
+      "Class 11",
+      "Class 12",
+      "Diploma",
+      "ITI",
+      "UG",
+      "PG"
+    ],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: 250000,
+    minMarks: 55,
+    amount: "Up to ₹75,000",
+    deadline: "Check official website",
+    officialUrl: "https://www.hdfcbankecss.com/",
+    description:
+      "Financial assistance for students facing financial difficulties and risk of dropping out."
+  },
+
+  {
+    id: "kotak-kanya",
+    name: "Kotak Kanya Scholarship",
+    provider: "Kotak Education Foundation",
+    type: "Private",
+    category: "Girls",
+    education: ["UG"],
+    states: ["All India"],
+    gender: "Female",
+    incomeLimit: 600000,
+    minMarks: null,
+    amount: "Up to ₹1,50,000/year",
+    deadline: "Check official website",
+    officialUrl:
+      "https://www.buddy4study.com/",
+    description:
+      "Scholarship support for eligible girl students pursuing higher education."
+  },
+
+  {
+    id: "tata-capital-pankh",
+    name: "Tata Capital Pankh Scholarship",
+    provider: "Tata Capital",
+    type: "Private",
+    category: "Merit-cum-Need",
+    education: ["Class 11", "Class 12", "Diploma", "UG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: 250000,
+    minMarks: 60,
+    amount: "Up to ₹1,00,000",
+    deadline: "Check official website",
+    officialUrl:
+      "https://www.buddy4study.com/",
+    description:
+      "Educational financial support for eligible students."
+  },
+
+  {
+    id: "lic-golden-jubilee",
+    name: "LIC Golden Jubilee Scholarship",
+    provider: "LIC",
+    type: "Private",
+    category: "Merit-cum-Need",
+    education: ["UG", "Professional"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: 450000,
+    minMarks: null,
+    amount: "As per current scheme",
+    deadline: "Check official website",
+    officialUrl: "https://licindia.in/",
+    description:
+      "Scholarship assistance for eligible students pursuing higher education."
+  },
+
+  {
+    id: "aditya-birla",
+    name: "Aditya Birla Capital Scholarship",
+    provider: "Aditya Birla Capital Foundation",
+    type: "Private",
+    category: "Merit-cum-Need",
+    education: ["UG", "PG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: 600000,
+    minMarks: null,
+    amount: "Up to ₹60,000",
+    deadline: "Check official website",
+    officialUrl:
+      "https://www.adityabirlacapital.com/",
+    description:
+      "Scholarship support for eligible students from financially disadvantaged backgrounds."
+  },
+
+  {
+    id: "ongc-scholarship",
+    name: "ONGC Scholarship",
+    provider: "ONGC Foundation",
+    type: "Private/PSU",
+    category: "Merit",
+    education: ["UG"],
+    states: ["All India"],
+    gender: "All",
+    incomeLimit: null,
+    minMarks: null,
+    amount: "As per current scheme",
+    deadline: "Check official website",
+    officialUrl: "https://ongcindia.com/",
+    description:
+      "Scholarship programme offered through ONGC Foundation for eligible students."
+  }
+];
